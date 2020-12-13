@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    <title>jQuery UI Tabs : Creating Tabs</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.3/themes/hot-sneaks/jquery-ui.css" />
+	<script src="http://code.jquery.com/jquery-2.1.3.js"></script>
+	<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+
+	<style>
+		.ui-widget-header {
+			background: #cedc98;
+			border: 1px solid #DDDDDD;
+			color: #333333;
+			font-weight: bold;
+		}
+		#container * {vertical-align: middle}
+	</style>
+	<script>
+	$(document).ready(function() {
+		// tabs
+		$("#divTabs").tabs({
+		event: "mouseover",
+		heightStyle: "content",
+		collapsible: true
+		});
+		
+		// accordian
+		$("#divAccordion").accordion({
+		collapsible: true
+		});
+		
+		// auto complete
+		var availableTags = [
+			"ActionScript",
+			"AppleScript",
+			"Asp",
+			"BASIC",
+			"C",
+			"C++",
+			"Clojure",
+			"COBOL",
+			"ColdFusion",
+			"Erlang",
+			"Fortran",
+			"Groovy",
+			"Haskell",
+			"Java",
+			"JavaScript",
+			"Lisp",
+			"Perl",
+			"PHP",
+			"Python",
+			"Ruby",
+			"Scala",
+			"Scheme"
+		];
+		
+		$("#tags").autocomplete({
+		source: availableTags 
+		});
+		
+		// date picker
+		$('#demoDate').datepicker({
+		showOn: "both",
+		buttonImage: "img/calender.png",
+		buttonImageOnly: true,
+		minDate: new Date (),
+		maxDate: +30			
+		});
+			
+		// spinner
+		$( "#spinner" ).spinner({
+		step: 25,
+		min: 25,
+		max: 500				
+		});
+		
+		// slider
+		$('#divSlider').slider({		
+		values: [25, 75],
+        range: true,
+        create: showSlider,
+        change: showSlider			
+		});
+		
+		function showSlider() {
+			$('#lowerLimit').text($('#divSlider').slider("values", 0));
+			$('#upperLimit').text($('#divSlider').slider("values", 1));
+		}
+		
+	});
+    </script> 
+</head> 
+<body>
+<h1>Tabs</h1> 
+<div id="divTabs">
+	<ul>
+		<li><a href="#coach">Coach</a></li>
+		<li><a href="#bike">Bike</a></li>
+		<li><a href="#truck">Truck</a></li>
+	</ul>
+	<div id="coach"><img src="img//coach.png"/></div>
+	<div id="bike"><img src="img/bike.png"/></div>
+	<div id="truck"><img src="img//truck.png"/></div>
+</div>
+
+<h1>Accordion</h1> 
+<div id="divAccordion">
+	<h2><a href="#">Asia</a></h2>
+	<div>China, India , Japan, Singapore</div>
+
+	<h2><a href="#">Europe</a></h2>
+	<div>England, Germany, France, Spain, Italy</div>
+
+	<h2><a href="#">America</a></h2>
+	<div>Canada, USA, Mexico, Brazil, Argentina</div>
+</div>
+
+<h1>Auto Complete</h1> 
+<div class="ui-widget">
+  <label for="tags">Tags: </label>
+  <input id="tags">
+</div>
+
+<h1>Date Picker</h1> 
+<div id="container" class="ui-widget">
+	<label for="demoDate">Date: </label>
+	<input id="demoDate"/><span id="inlineDate"></span>
+</div>
+
+<h1>Spinner</h1> 
+<div>
+  <label for="spinner">Amount to donate:</label>
+  <input id="spinner" name="spinner" value="25">
+</div>
+
+<h1>Slider</h1> 
+<div id="divSlider"></div><br>
+<div>Lower Limit: <span id="lowerLimit"></span> Upper Limit: <span id="upperLimit"></span></div>
+</body>
+</html>
